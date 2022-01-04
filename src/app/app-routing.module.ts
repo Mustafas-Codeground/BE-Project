@@ -11,6 +11,11 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'towed-list',
+    loadChildren: () => import('./towed-list/towed-list.module').then( m => m.TowedListPageModule)
+  },
+
 ];
 
 @NgModule({

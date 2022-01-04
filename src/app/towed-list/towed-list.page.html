@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+
+    <center>
+      <ion-title style="margin-left:-55px"> Towed Vehicle </ion-title>
+    </center>
+      
+
+
+  </ion-toolbar>
+  <ion-searchbar debounce="500" (ionChange)="get($event)" ></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div *ngIf="towedVehicles">
+      <ion-list *ngFor="let towedVehicle of this.towedVehicles">
+            <ion-item (click)="clicked(this.towedVehicle)"> {{ towedVehicle.regn }} </ion-item>
+        </ion-list>
+    </div>
+
+  <div *ngIf="!towedVehicles">
+      <div class="ion-padding custom-skeleton">
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+        <ion-skeleton-text animated style="width: 100%; height: 35px;margin-top:5px;"></ion-skeleton-text><br>
+
+      </div>
+    </div>
+  
+
+</ion-content>
