@@ -8,12 +8,18 @@ import { TowVehiclePageRoutingModule } from './tow-vehicle-routing.module';
 
 import { TowVehiclePage } from './tow-vehicle.page';
 
+import { MaterialComponentModule } from '../material-component/material-component.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TowVehiclePageRoutingModule
+    TowVehiclePageRoutingModule,
+    MaterialComponentModule,
+    ReactiveFormsModule
   ],
   declarations: [TowVehiclePage]
 })

@@ -6,4 +6,22 @@
 
 <ion-content>
 
+  <div>
+    <form [formGroup] = 'addVehicle' (ngSubmit)='submit(addVehicle.value)'>
+      <ion-item>
+        <mat-form-field appearance="outline">
+          <mat-label>Vehicle Number</mat-label>
+          <input matInput formControlName='regn' placeholder="XX13XX0000">
+        </mat-form-field>
+      </ion-item>
+      <div *ngIf="addVehicle.get('regn').errors && (addVehicle.get('regn').touched || addVehicle.get('regn').dirty)">
+        <ion-item>
+          <mat-error>
+            {{ getError() }}
+          </mat-error>
+        </ion-item>
+      </div>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+  </div>
 </ion-content>
