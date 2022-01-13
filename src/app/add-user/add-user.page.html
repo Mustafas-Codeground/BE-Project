@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <center>
+    <ion-title style="font-size: 30px; font-weight: 900;">Add User</ion-title>
+  </center>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label position="stacked" style="font-size:25px;">Name:</ion-label>
+    <br>
+    <ion-input placeholder="Enter as per govt. issued ID" [(ngModel)]="perName" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked" style="font-size:25px;">Id Type:</ion-label>
+    <br>
+    <ion-input placeholder="Eg: Aadhar/PAN" [(ngModel)]="idType" type="text" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked" style="font-size:25px;">ID Number:</ion-label>
+    <br>
+    <ion-input placeholder="Enter without spaces" [(ngModel)]="idNum" required pattern="([A-Z0-9a-z\s]){10,}"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked" style="font-size:25px;">Mobile Number:</ion-label>
+    <br>
+    <ion-input placeholder="Without +91" [(ngModel)]="mobNum" type="number" required pattern="([0-9\s]){10,10}"></ion-input>
+  </ion-item>
+  <ion-row style="height: 10px"></ion-row>
+
+
+
+  <ion-button color="primary" (click)="submit()" 
+  [disabled]="!perName || !idType || !idNum || !mobNum"> Add User </ion-button>
+
+
+</ion-content>
