@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 })
 export class ApiService {
 
-  url='http://localhost:80/BE/';
+  url='http://13.233.221.76/BE/';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
+import { ModalController } from '@ionic/angular';
+import { ModalComponent } from '../modal/modal.component';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -11,7 +15,23 @@ export class TowedListPage implements OnInit {
 
 towedVehicles=[];
 
-  constructor(private apiService:ApiService) { }
+  constructor(private apiService:ApiService,
+              private modalCtrl: ModalController,
+              private router: Router) { }
+
+  async openModal(vehicle) {
+    const modal = await this.modalCtrl.create({
+      component: ModalComponent,
+      componentProps:{
+        'vehicle':vehicle
+      }
+      
+    
+    });
+
+     modal.present();
+  }
+
 
   ngOnInit() {
   	let body = {
@@ -20,9 +40,12 @@ towedVehicles=[];
 
   	this.apiService.post('towedList.php', body).subscribe(data =>{
     	console.log(data);
-      console.log(data.list);
     	this.towedVehicles=data.list; 
   	});
+  }
+  clicked(towedVehicle): void {
+  
+    this.router.navigate(['/home']);
   }
 
 }

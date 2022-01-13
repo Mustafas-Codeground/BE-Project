@@ -5,7 +5,7 @@
     </ion-buttons>
 
     <center>
-      <ion-title style="margin-left:-55px"> Towed Vehicle </ion-title>
+      <ion-title style="margin-left:-55px"> Towed Vehicles </ion-title>
     </center>
       
 
@@ -14,11 +14,11 @@
   <ion-searchbar debounce="500" (ionChange)="get($event)" ></ion-searchbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding">
 
   <div *ngIf="towedVehicles">
       <ion-list *ngFor="let towedVehicle of this.towedVehicles">
-            <ion-item (click)="clicked(this.towedVehicle)"> {{ towedVehicle.regn }} </ion-item>
+            <ion-item (click)="openModal(towedVehicle)"> {{ towedVehicle.regn }} </ion-item>
         </ion-list>
     </div>
 
@@ -34,6 +34,10 @@
 
       </div>
     </div>
+   
+      
+    
+    
   
 
 </ion-content>
