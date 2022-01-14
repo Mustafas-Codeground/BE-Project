@@ -22,14 +22,16 @@ towedVehicles=[];
   async openModal(vehicle) {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
+
+      cssClass: 'my-modal-component-css',
       componentProps:{
-        'vehicle':vehicle
-      }
-      
+        'vehicle' : vehicle
+      },
     
+      
     });
 
-     modal.present();
+    await modal.present();
   }
 
 
@@ -40,7 +42,8 @@ towedVehicles=[];
 
   	this.apiService.post('towedList.php', body).subscribe(data =>{
     	console.log(data);
-    	this.towedVehicles=data.list; 
+    	this.towedVehicles=data.list;
+     
   	});
   }
   clicked(towedVehicle): void {
@@ -48,4 +51,5 @@ towedVehicles=[];
     this.router.navigate(['/home']);
   }
 
+ 
 }

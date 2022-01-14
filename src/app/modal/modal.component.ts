@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-modal',
@@ -8,8 +11,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ModalComponent implements OnInit {
   @Input() vehicle:any;
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController,
+              private router: Router) { }
 
-  ngOnInit() {}
+  
+
+  ngOnInit() {
+    console.log(this.vehicle)
+  }
+
+_dismiss(){
+  console.log("dismiss")
+  this.modalCtrl.dismiss()
+}
+
+
 
 }
