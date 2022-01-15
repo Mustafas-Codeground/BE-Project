@@ -1,8 +1,16 @@
 <ion-header class="ion-no-border">
   <ion-toolbar >
-    <center>
-    <ion-title style="font-size: 30px; font-weight: 900;">Add User</ion-title>
-  </center>
+    <div *ngIf="!isEdit">
+      <center>
+        <ion-title style="font-size: 170%; font-weight: 900;">Edit User</ion-title>
+      </center>
+    </div>
+
+    <div *ngIf="isEdit">
+      <center>
+        <ion-title style="font-size: 170%; font-weight: 900;">Add User</ion-title>
+      </center>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -15,10 +23,17 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="stacked" style="font-size:25px;">Id Type:</ion-label>
+    <ion-label position="stacked" style="font-size:25px;">Username:</ion-label>
     <br>
-    <ion-input placeholder="Eg: Aadhar/PAN" [(ngModel)]="idType" type="text" required></ion-input>
+    <ion-input placeholder="Enter username" [(ngModel)]="uName" type="text" required></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked" style="font-size:25px;">Password</ion-label>
+    <br>
+    <ion-input placeholder="Enter Password" [(ngModel)]="idType" type="Password" required></ion-input>
+  </ion-item>
+  
 
   <ion-item>
     <ion-label position="stacked" style="font-size:25px;">ID Number:</ion-label>
@@ -34,9 +49,14 @@
   <ion-row style="height: 10px"></ion-row>
 
 
+  <div *ngIf="!isEdit">
+    <ion-button color="primary" (click)="submit()" 
+    [disabled]="!perName || !idType || !idNum || !mobNum">Edit User</ion-button>
+  </div>
 
-  <ion-button color="primary" (click)="submit()" 
-  [disabled]="!perName || !idType || !idNum || !mobNum"> Add User </ion-button>
-
+  <div *ngIf="isEdit">
+    <ion-button color="primary" (click)="submit()" 
+    [disabled]="!perName || !idType || !idNum || !mobNum">Add User</ion-button>
+  </div>
 
 </ion-content>

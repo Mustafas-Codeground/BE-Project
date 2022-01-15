@@ -18,17 +18,34 @@ export class AdminPanelPage implements OnInit {
   private router : Router) { }
 
   async Modal(g) {
-    const modal = await this.modalCtrl.create({
-      component: AddUserPage,   
-      breakpoints: [0, 0.3, 0.5, 0.8],
-      initialBreakpoint: 0.6,
-      cssClass: 'adduserModal-css',
-      componentProps: {
-        obj : g
-      }
-    });
+    if(g){
+      const modal = await this.modalCtrl.create({
+        component: AddUserPage,   
+        initialBreakpoint: 0.6,
+        breakpoints: [0, 0.3, 0.5, 0.8],
+        cssClass: 'adduserModal-css',
+        componentProps: {
+          obj : g,
+          isEdit : false
+        }
+      });
+      await modal.present();
+    }
+    else{
+      const modal = await this.modalCtrl.create({
+        component: AddUserPage,   
+        breakpoints: [0, 0.3, 0.5, 0.8],
+        initialBreakpoint: 0.6,
+        cssClass: 'adduserModal-css',
+        componentProps: {
+          obj : g,
+          isEdit : true
+        }
+      });
+      await modal.present();
+    }
     
-    await modal.present();
+    
   }
 
   // openModal() {
