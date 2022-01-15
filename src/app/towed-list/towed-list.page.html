@@ -17,7 +17,7 @@
 <ion-content class="ion-padding">
 
   <div *ngIf="towedVehicles">
-      <ion-list *ngFor="let towedVehicle of this.towedVehicles">
+      <ion-list *ngFor="let towedVehicle of this.towedVehicles ">
             <ion-item (click)="openModal(towedVehicle)"> {{ towedVehicle.regn }} </ion-item>
         </ion-list>
     </div>

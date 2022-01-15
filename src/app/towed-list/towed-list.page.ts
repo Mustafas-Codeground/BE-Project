@@ -13,7 +13,12 @@ import { Router } from '@angular/router';
 })
 export class TowedListPage implements OnInit {
 
+
 towedVehicles=[];
+towedVehicle;
+
+
+
 
   constructor(private apiService:ApiService,
               private modalCtrl: ModalController,
@@ -22,8 +27,8 @@ towedVehicles=[];
   async openModal(vehicle) {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
-
-      cssClass: 'my-modal-component-css',
+      initialBreakpoint: 0.5,
+      breakpoints: [0,0.5,1],
       componentProps:{
         'vehicle' : vehicle
       },
@@ -42,14 +47,25 @@ towedVehicles=[];
 
   	this.apiService.post('towedList.php', body).subscribe(data =>{
     	console.log(data);
-    	this.towedVehicles=data.list;
-     
+    	this.towedVehicles = data.list; 
+      this.towedVehicle =this.towedVehicles;
+    
   	});
   }
   clicked(towedVehicle): void {
   
     this.router.navigate(['/home']);
   }
+  get(e:any) {
+    var val = e.target.value;
 
- 
+    this.towedVehicles=this.towedVehicle;
+    if(val && val.trim() != ''){
+      this.towedVehicles = this.towedVehicles.filter((towedVehicle:any) => {
+        return (towedVehicle.regn.toString().toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+  
 }
+

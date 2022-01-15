@@ -8,12 +8,10 @@ import 'rxjs/add/operator/map';
 })
 export class ApiService {
 
-<<<<<<< HEAD
-  url='http://13.233.221.76/BE/';
-=======
+
   // url='http://localhost:80/BE/';
   url = 'http://13.233.221.76/BE/'; // use AWS instance
->>>>>>> 8890a0343f1690ee855e397d35cb74086385627e
+
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
